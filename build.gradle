@@ -1,0 +1,18 @@
+allprojects {
+
+    apply plugin: 'java'
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    dependencies {
+        // Use JUnit Jupiter API for testing.
+        def jupiterVersion = '5.6.2'
+        testImplementation "org.junit.jupiter:junit-jupiter-api:${jupiterVersion}"
+        testImplementation "org.junit.jupiter:junit-jupiter-params:${jupiterVersion}"
+        testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${jupiterVersion}"
+        testImplementation "org.junit.jupiter:junit-jupiter:${jupiterVersion}"
+    }
+}

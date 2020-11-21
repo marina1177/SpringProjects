@@ -1,0 +1,30 @@
+
+### VS Code ###
+.vscode/
+.DS_Store
+.gradle
+build
+.idea
+
+# Ignore Gradle project-specific cache directory
+*/.gradle
+*/build
+*/gradle
+*/src/main/java/.DS_Store
+*/src/test/java/.DS_Store
+*/.idea
+*/.DS_Store
+*/gradlew
+*/gradlew.bat
+*/settings.gradle
+
+# Ignore Gradle build output directory
+
+InvIndex/src/main/resources/*
+InvIndex/src/test/resources/*
+
+
+FStoKafka/src/main/resources/Docs
+FStoKafka/$
+
+

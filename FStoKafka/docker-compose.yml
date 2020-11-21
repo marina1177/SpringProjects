@@ -1,0 +1,51 @@
+version: '3.7'
+
+services:
+  application:
+    image: application:1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - /data/application
+    ports:
+      - 8080:8080
+    depends_on:
+      - prometheus
+
+  prometheus:
+      image: prom/prometheus:latest
+      volumes:
+        - ./prometheus.yml
+      ports:
+        - 9090:9090
+
+  grafana:
+      image: grafana/grafana:latest
+      depends_on:
+        - prometheus
+      ports:
+        - "3000:3000"
+      volumes:
+        - ./grafana #:/etc/grafana/
+
+  zookeeper:
+      image: zookeeper:3.5
+      ports:
+        - 2181:2181
+      container_name: zookeeper
+#
+  kafka:
+      image:  wurstmeister/kafka
+      container_name: kafka
+      ports:
+        - 9092:9092
+      depends_on:
+        - zookeeper
+      environment:
+        KAFKA_ADVERTISED_HOST_NAME: localhost
+        KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+        KAFKA_CREATE_TOPIC: "sender:1:3"
+
+
+

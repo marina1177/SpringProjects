@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+  application:
+    image: application:1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      - prometheus
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - 9090:9090
+    volumes:
+      - './prometheus/prometheus.yml:/etc/prometheus/prometheus.yml'
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention=200h'
+      - '--web.enable-lifecycle'
+  #      command:
+  #        - '--config.file=/etc/prometheus/prometheus.yml'
+
+
+#
+#  prometheus:
+#    image: prom/prometheus:latest
+#    volumes:
+#      - ./prometheus.yml
+#    ports:
+#      - 9090:9090
+
+#  grafana:
+#    image: grafana/grafana:latest
+#    depends_on:
+#      - prometheus
+#    ports:
+#      - "3000:3000"
+#    volumes:
+#      - ./grafana #:/etc/grafana/
+
+
+
+

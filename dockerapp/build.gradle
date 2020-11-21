@@ -1,0 +1,43 @@
+buildscript {
+
+    def springBootVersion = "2.3.3.RELEASE"
+    repositories {
+        mavenCentral()
+        dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}") }
+    }
+}
+
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    def springBootStarterVersion = '2.3.4.RELEASE'
+    implementation "org.springframework.boot:spring-boot-starter-actuator:${springBootStarterVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootStarterVersion}"
+
+    //metrics
+    implementation 'org.springframework.metrics:spring-metrics:latest.release'
+    implementation 'io.prometheus:simpleclient_common:latest.release'
+    implementation "io.micrometer:micrometer-registry-prometheus:1.5.4"
+    implementation "org.apache.commons:commons-lang3:3.11"
+
+    // https://projectlombok.org
+    def lombokVersion = '1.18.4'
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    testImplementation "org.assertj:assertj-core:3.17.1"
+    testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootStarterVersion}"
+
+}
+
+
+
+
+
+

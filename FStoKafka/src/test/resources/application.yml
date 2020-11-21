@@ -1,0 +1,38 @@
+
+spring:
+  fileType: .json
+  fieldName: items
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:tc:postgresql:9.6:///?TC_INITSCRIPT=file:src/main/resources/sql/init.sql
+    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        ddl-auto: create-drop
+    database-platform=org:
+      hibernate:
+        dialect: PostgreSQL9Dialect
+
+
+
+server:
+  error:
+    include-stacktrace: never
+
+url: http://jsonplaceholder.typicode.com/posts #/1 # http://httpbin.org/json #
+
+kafka:
+  bootstrap-servers: localhost:9092
+  topic: sender
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - '*'

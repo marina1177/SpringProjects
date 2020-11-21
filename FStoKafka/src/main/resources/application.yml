@@ -1,0 +1,31 @@
+
+spring:
+  fileType: .json
+  fieldName: items
+  datasource:
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://localhost:5432/statistics # jdbc:postgresql://localhost:5433/company
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+        ddl-auto: create-drop
+server:
+  error:
+    include-stacktrace: never
+
+url: http://jsonplaceholder.typicode.com/posts #/1 # http://httpbin.org/json #
+
+kafka:
+    bootstrap-servers: localhost:9092
+    topic: sender
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - '*'
