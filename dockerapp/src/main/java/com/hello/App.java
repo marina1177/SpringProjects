@@ -9,7 +9,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 //@EnablePrometheusMetrics
 //@EnableSpringBootMetricsCollector
 @SpringBootApplication
-@EnableScheduling
 public class App {
 
   public static void main(String[] args) {

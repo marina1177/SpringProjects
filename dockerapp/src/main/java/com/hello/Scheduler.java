@@ -6,9 +6,9 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
-@Component
+@RestController
 public class Scheduler {
 
   private final AtomicInteger testGauge;
@@ -23,10 +23,12 @@ public class Scheduler {
   }
 
   @Scheduled(fixedRateString = "1000", initialDelayString = "0")
-  public void schedulingTask() {
+  public String schedulingTask() {
     testGauge.set(Scheduler.getRandomNumberInRange(0, 100));
 
     testCounter.increment();
+
+    return "Sheduler";
   }
 
   private static int getRandomNumberInRange(int min, int max) {

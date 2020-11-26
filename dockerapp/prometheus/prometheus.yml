@@ -6,21 +6,7 @@ scrape_configs:
     metrics_path: '/actuator/prometheus'
     scrape_interval: 5s
     static_configs:
-      - targets: ['application:8080']
+      - targets:  ['192.168.1.37:8080']
+#        ['application:8080']
 
-#  - job_name: "key-value"
-#    static_configs:
-#      - targets: ['application:8080']
-
-#  - job_name: 'application'
-#      metrics_path: '/actuator/prometheus'
-#      static_configs:
-#        - targets: ['localhost:8080']
-
-
-#  - job_name: spring-actuator
-#  metrics_path: '/actuator/prometheus'
-#  scrape_interval: 5s
-#  static_configs:
-#    - targets: ['localhost:9090']
 
