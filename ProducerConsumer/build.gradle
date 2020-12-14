@@ -1,0 +1,35 @@
+buildscript {
+	repositories {
+		mavenCentral()
+		dependencies { classpath("org.springframework.boot:spring-boot-gradle-plugin:2.3.3.RELEASE") }
+
+	}}
+
+apply plugin: 'application'
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+	repositories {
+		mavenCentral()
+	}
+
+	dependencies {
+//	implementation "org.springframework.boot:spring-boot-starter:2.3.3.RELEASE"
+//	implementation 'org.springframework.boot:spring-boot-starter-web'
+//	implementation 'org.springframework.kafka:spring-kafka'
+
+		compileOnly 'org.projectlombok:lombok:1.18.4'
+		annotationProcessor 'org.projectlombok:lombok:1.18.4'
+
+		implementation  'org.slf4j:slf4j-api:1.7.30'
+		implementation("org.springframework.boot:spring-boot-starter")
+		implementation('org.springframework.boot:spring-boot-starter-web')
+		implementation('org.springframework.kafka:spring-kafka')
+
+	}
+
+	test {
+		useJUnitPlatform()
+	}

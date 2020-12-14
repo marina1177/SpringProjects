@@ -1,0 +1,46 @@
+[
+  {
+    "_id": "5f3cf4833a91b1f55070bf33",
+    "index": 0,
+    "guid": "85c3260a-2306-4e48-af00-d1989461ea0e",
+    "isActive": true,
+    "balance": "$1,685.27",
+    "age": 29,
+    "eyeColor": "green",
+    "name": "Bertie Osborne",
+    "gender": "female",
+    "company": "ECRATER",
+    "email": "bertieosborne@ecrater.com",
+    "phone": "+1 (933) 576-2340",
+    "address": "481 Hoyt Street, Riverton, Hawaii, 2383",
+    "about": "Aliqua magna dolore sint anim. Id ullamco sit dolor laboris enim ullamco sunt id laboris sunt sunt ipsum. Pariatur quis ea magna id cillum Lorem. Sit aliqua ut anim amet. Elit exercitation sunt ut laborum eiusmod id labore non cupidatat.\r\n",
+    "registered": "2015-05-12T01:51:57 -03:00",
+    "latitude": 62.151716,
+    "longitude": 69.51133,
+    "tags": [
+      "id",
+      "cupidatat",
+      "irure",
+      "sunt",
+      "ipsum",
+      "exercitation",
+      "elit"
+    ],
+    "items": [
+      {
+        "id": 0,
+        "name": "Katrina Mcknight"
+      },
+      {
+        "id": 1,
+        "name": "Bernice Compton"
+      },
+      {
+        "id": 2,
+        "name": "Nanette Mann"
+      }
+    ],
+    "greeting": "Hello, Bertie Osborne! You have 2 unread messages.",
+    "favoriteFruit": "strawberry"
+  }
+]

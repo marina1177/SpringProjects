@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  application:
+    image: application:1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - /data/application
+    ports:
+      - "8080:8080"
+#    depends_on:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: company
+
+
+    adminer:
+      image: adminer
+      restart: always
+      ports:
+        - 8080:8080
+
+#  prometheus:
+#    image: prom/prometheus:latest
+#    volumes:
+#      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+#    ports:
+#      - 9090:9090
+#
+#  grafana:
+#    image: grafana/grafana
+#    ports:
+#      - 3000:3000
+#    volumes:
+#      - ./datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+#    depends_on:
+#      - prometheus
