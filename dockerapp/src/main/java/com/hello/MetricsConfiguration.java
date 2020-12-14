@@ -4,22 +4,27 @@ import com.hello.catalog.CatalogClient;
 import com.hello.catalog.DemoCounters;
 import io.micrometer.core.instrument.Counter;
 import io.micrometer.core.instrument.MeterRegistry;
-import javax.annotation.PostConstruct;
-import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MetricsConfiguration {
 
-  @PostConstruct
-  MeterRegistryCustomizer<MeterRegistry> meterRegistryMeterRegistryCustomizer() {
-    return MeterRegistry::config;
+
+  @Bean
+  MyInterface myInterface(){
+  return new MyInterfaceImpl();
+  }
+
+
+  @Bean
+  CatalogClient catalogClient(DemoCounters demoCounters) {
+    return CatalogClient.from(demoCounters);
   }
 
   @Bean
-  CatalogClient catalogClient(MeterRegistry meterRegistry) {
-    return CatalogClient.from(DemoCounters.init(meterRegistry));
+  DemoCounters metrics(MeterRegistry meterRegistry){
+    return DemoCounters.init(meterRegistry);
   }
 
   @Bean
@@ -28,5 +33,7 @@ public class MetricsConfiguration {
         .description("Number of hello requests.")
         .register(registry);
   }
+
+
 
 }

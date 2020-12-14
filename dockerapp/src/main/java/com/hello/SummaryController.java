@@ -10,9 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class SummaryController {
 
   private final Counter requestCount;
+  private final MyInterface myInterface;
 
   @GetMapping(value = "/hello")
   public String hello() {
+    myInterface.save("hello");
+    myInterface.count();
+
     requestCount.increment();
     requestCount.increment(0.5);
 
